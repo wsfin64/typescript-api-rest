@@ -23,30 +23,8 @@ reflect-metadata - dependencia do typeorm
 ## iniciar o typescript - arquivo de configuração do typescript (criar o tsconfg.json) 
 npx tsc --init
 
-## apagar a configuração padrão criada e adicionar a configuração customizada abaixo no tsconfig.json:
-{
-  "compilerOptions": {
-    "target": "ES2018",
-    "lib": ["es5", "es6", "ES2018"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "outDir": "./dist",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictPropertyInitialization": false
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
-  "ts-node": {
-    "files": true
-  }
-}
+## apagar a configuração padrão criada e adicionar a configuração customizada no tsconfig.json:
+
 
 ## criar arquivo .env para as variáveis ambiente do banco de dados com o seguinte conteudo:
 DB_HOST=localhost
@@ -56,22 +34,9 @@ DB_PASS=postgres
 DB_NAME=api_rest_typescript
 
 
-## configuração inicial do type-orm criando um arquivo data-source.ts e criando a configuração inicial abaixo:
+## configuração inicial do type-orm criando um arquivo data-source.ts
 
-import 'dotenv/config'
-import 'reflect-metadata'
-import { DataSource } from "typeorm";
+## Fazer configuração no index.ts
 
-const port = process.env.DB_PORT as number | undefined
-
-export const AppDataSource = new DataSource(
-    {
-        type: "postgres",
-        host: process.env.DB_HOST,
-        port: port,
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
-        
-    }
-)
+## Para testar, usar o comando:
+ - yarn dev
